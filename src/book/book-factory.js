@@ -5,6 +5,7 @@ class BookFactory{
     /**
      *
      * @param {Object} bookRaw
+     * @param {Object} publisher
      * @return {Book}
      */
     make(bookRaw) {

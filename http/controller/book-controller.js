@@ -16,8 +16,8 @@ class BookController {
 
     createBook(request, response, next) {
         let repo = request.app.get('books.repo');
-        repo.add(request.book).then(function (result) {
-            response.status(201).json(result.toJson());
+        repo.add(request.book).then(function () {
+            response.status(201).send({message: "Success!"});
         }).catch(function (err) {
             next(err);
         });
@@ -37,15 +37,18 @@ class BookController {
         });
     }
 
-    searchBook(request, response) {
+    bookById(request, response) {
         let repo = request.app.get('books.repo');
-        repo.get(request.params.id).then(function (result) {
-            response.status(200).send(result.toJson());
+        repo.get(request.params.id).then(function (books) {
+            let results = books.map(function (element) {
+                return element.toJson();
+            });
+            response.status(200).send(results);
         });
     }
 
     search(request, response, next) {
-        request.app.get('book.searcher').search(request.searchCondition)
+        request.app.get('book.searcher').search(request.condition)
             .then((results) => response.status(200).send(results.map(result => result.toJson())))
             .catch(next)
     }

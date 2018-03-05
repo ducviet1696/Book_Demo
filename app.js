@@ -5,8 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const BookRepository = require('./src/book/book-repository');
-const knex = require('./database/connection');
+const connection = require('./database/connection');
 const BookFactory = require('./src/book/book-factory');
+const Searcher = require('./src/search-services/searcher');
 
 var index = require('./routes/index');
 
@@ -24,7 +25,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.set('books.repo', new BookRepository(knex, new BookFactory()));
+
+app.set('books.repo', new BookRepository(connection, new BookFactory()));
+app.set('book.searcher', new Searcher(connection, new BookFactory()));
+
 app.use('/', index);
 // app.use('/users', users);
 

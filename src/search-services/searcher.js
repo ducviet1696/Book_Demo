@@ -19,11 +19,11 @@ class Searcher {
      * @return Book[]
      */
     search(condition) {
-        let sqlQuery = this.connection('books').column(['id','title','author','publisher','price'])
-        return condition.describe(sqlQuery)
-            .then(books =>{return books.map((bookRaw) => {
-            return this.factory.make(bookRaw);
-        })});
+        let factory  = this.factory;
+        let sqlQuery = this.connection.select('id', 'title', 'author', 'publisher', 'price', 'deleted_at').from('books');
+        condition.describe(sqlQuery);
+        console.log(sqlQuery.toSQL().sql);
+        return sqlQuery.then(results => results.map(element => factory.make(element)));
     }
 }
 
