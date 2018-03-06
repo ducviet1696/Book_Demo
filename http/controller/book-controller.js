@@ -14,10 +14,12 @@ class BookController {
         });
     }
 
-    deleteBook(request, response) {
+    deleteBook(request, response, next) {
         let repo = request.app.get('books.repo');
         repo.remove(request.params.id).then(function () {
             response.status(200).json({message:'Success'});
+        }).catch(function (err) {
+            next(err);
         });
     }
 

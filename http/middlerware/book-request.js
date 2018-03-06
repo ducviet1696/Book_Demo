@@ -6,8 +6,7 @@ module.exports = function (req, res, next) {
     let book = new Book(req.body.title, req.body.author);
     book.setPrice(req.body.price);
     //create publisher
-    let publishers = [];
-    let publisherPromise = connection.select()
+    connection.select()
         .from('publishers')
         .where({id : req.body.publisher_id})
         .then(results => {

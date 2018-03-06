@@ -19,9 +19,6 @@ class BookFactory{
         book.setPublisher(publisher);
         return book;
     }
-    makeFromRequest(bookRaw) {
-
-    }
 }
 
 module.exports = BookFactory;

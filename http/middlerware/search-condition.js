@@ -1,6 +1,6 @@
 const AdvanceSearchCondition = require('../../src/search-services/advance-search-condition');
 const KeywordSearchCondition = require('../../src/search-services/keyword-search-condition');
-const UndeletedSearchCondition = require('../../src/search-services/undeleted-search-condition');
+const UnDeletedSearchCondition = require('../../src/search-services/undeleted-search-condition');
 const IdSearchCondition = require('../../src/search-services/id-search-condition');
 
 module.exports = (req, res, next) => {
@@ -14,7 +14,7 @@ function makeCondition(request) {
     } else if (request.path === '/search-basic'){
         return new KeywordSearchCondition(request.query.keyword);
     } else if (request.path === '/books'){
-        return new UndeletedSearchCondition();
+        return new UnDeletedSearchCondition();
     } else if (request.path.toString().startsWith('/book/')) {
         return new IdSearchCondition(request.params.id);
     }
