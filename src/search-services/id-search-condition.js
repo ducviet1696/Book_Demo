@@ -10,7 +10,7 @@ class IdSearchCondition {
      * @return {Book[]}
      */
     describe(sqlQuery) {
-        return sqlQuery.where({deleted_at: null, id: this.bookId})
+        return sqlQuery.where({'books.deleted_at': null, 'books.id': this.bookId})
     }
 }
 

@@ -111,7 +111,7 @@ class Book{
             id       :this.getId(),
             title    :this.getTitle(),
             author   :this.getAuthor(),
-            publisher:this.getPublisher(),
+            publisher:this.getPublisher().getName(),
             price    :this.getPrice()
         }
     }

@@ -10,14 +10,16 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
+let checkUpData = [check.checkTitleNull, check.checkAuthorNull, check.checkTitleLength, check.checkAuthorLength];
+
 
 router.get('/books', check.searchCondition, bookController.search);
 
 router.get('/book/:id', check.searchCondition, bookController.search);
 
-router.post('/book', check.bookRequest, bookController.createBook);
+router.post('/book', check.postBookRequest, checkUpData, bookController.createBook);
 
-router.put('/book', check.bookRequest, bookController.editBook);
+router.put('/book', check.putBookRequest, checkUpData, bookController.editBook);
 
 router.delete('/book/:id', bookController.deleteBook);
 

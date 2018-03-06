@@ -17,7 +17,7 @@ class BookRepository{
      * @return {Promise <void>}
      */
     add(book) {
-        console.log(book, book.getPublisher());
+        // console.log(book, book.getPublisher());
         return this.connection('books').insert({
             title: book.getTitle(),
             author: book.getAuthor(),
@@ -35,7 +35,7 @@ class BookRepository{
         return this.connection('books').update({
             title: book.getTitle(),
             author: book.getAuthor(),
-            publisher: book.getPublisher(),
+            publisher_id: book.getPublisher().getId(),
             price: book.getPrice()
         }).where({
             id: book.getId()

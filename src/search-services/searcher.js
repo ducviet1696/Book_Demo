@@ -27,7 +27,6 @@ class Searcher {
                 this.on('publisher_id', '=', 'publishers.id')
             });
         condition.describe(sqlQuery);
-        console.log(sqlQuery.toSQL());
         return sqlQuery.then(results => results.map(element => factory.makeFromDB(element)));
     }
 }
