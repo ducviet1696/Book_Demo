@@ -1,17 +1,14 @@
 const Book = require('./book');
 const Connection = require('../../database/connection');
-const BookFactory = require('./book-factory');
 
 class BookRepository{
 
     /**
      *
      * @param {Connection} connection
-     * @param {BookFactory} factory
      */
-    constructor(connection, factory) {
+    constructor(connection) {
         this.connection = connection;
-        this.factory = factory;
     }
 
     /**
@@ -20,10 +17,11 @@ class BookRepository{
      * @return {Promise <void>}
      */
     add(book) {
+        console.log(book, book.getPublisher());
         return this.connection('books').insert({
             title: book.getTitle(),
             author: book.getAuthor(),
-            publisher: book.getPublisher(),
+            publisher_id: book.getPublisher().getId(),
             price: book.getPrice()
         });
     }
@@ -44,17 +42,6 @@ class BookRepository{
         });
     }
 
-    /**
-     *
-     * @return {Book[]}
-     */
-    all() {
-        return this.connection.column(['id','title','author','publisher','price'])
-            .select().from('books').where({deleted_at:null})
-            .then(books =>{return books.map((bookRaw) => {
-                return this.factory.make(bookRaw);
-            })});
-    }
 
     /**
      *
@@ -69,18 +56,6 @@ class BookRepository{
         });
     }
 
-    /**
-     *
-     * @param {INT} id
-     * @return {Promise <Book>}
-     */
-    get(id){
-        return this.connection.column(['id','title','author','publisher','price'])
-            .select().from('books').where({deleted_at:null, id: id})
-            .then(books =>{return books.map((bookRaw) => {
-                return this.factory.make(bookRaw);
-            })});
-    }
 
 }
 

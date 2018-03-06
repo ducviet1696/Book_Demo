@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.set('books.repo', new BookRepository(connection, new BookFactory()));
+app.set('books.repo', new BookRepository(connection));
 app.set('book.searcher', new Searcher(connection, new BookFactory()));
 
 app.use('/', index);

@@ -14,11 +14,13 @@ class KeywordSearchCondition {
      * @return {Book[]}
      */
     describe(sqlQuery) {
-        return sqlQuery.where(function () {
-             this.where('author', 'like', '%' + this.keyword + '%')
-                .orWhere('title', 'like', '%' + this.keyword + '%')
-                .orWhere('publisher', 'like', '%' + this.keyword + '%')
-        }).orWhere({deleted_at: null})
+        let keyword = this.keyword;
+        return sqlQuery
+            .where(function () {
+            this.where('title', 'like', '%' + keyword + '%')
+                .orWhere('author', 'like', '%' + keyword + '%')
+                .orWhere('publisher', 'like', '%' + keyword + '%')
+        }).where({deleted_at: null});
     }
 }
 

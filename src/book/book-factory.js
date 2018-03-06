@@ -1,19 +1,26 @@
 const Book = require('./book');
+const Publisher = require('../publisher/publisher');
 
 class BookFactory{
 
     /**
      *
      * @param {Object} bookRaw
-     * @param {Object} publisher
      * @return {Book}
      */
-    make(bookRaw) {
+    makeFromDB(bookRaw) {
         let book = new Book(bookRaw.title, bookRaw.author);
         book.setId(bookRaw.id);
-        book.setPublisher(bookRaw.publisher);
         book.setPrice(bookRaw.price);
+        let publisher = new Publisher(bookRaw.name);
+        publisher.setId(bookRaw.publisher_id);
+        publisher.setAddress(bookRaw.address);
+        publisher.setPhone(bookRaw.phone);
+        book.setPublisher(publisher);
         return book;
+    }
+    makeFromRequest(bookRaw) {
+
     }
 }
 

@@ -8,6 +8,9 @@ class Publisher {
         this.name = name;
     }
 
+    getId() {
+        return this.id;
+    }
     /**
      *
      * @return {string}
@@ -49,6 +52,16 @@ class Publisher {
      */
     setPhone(phone) {
         this.phone = phone;
+    }
+
+    /**
+     *
+     * @param {INT} id
+     * @return self
+     */
+    setId(id) {
+        this.id = id;
+        return this;
     }
 }
 

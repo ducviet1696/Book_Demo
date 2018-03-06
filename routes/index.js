@@ -11,9 +11,9 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/books', bookController.getAll);
+router.get('/books', check.searchCondition, bookController.search);
 
-router.get('/book/:id', bookController.bookById);
+router.get('/book/:id', check.searchCondition, bookController.search);
 
 router.post('/book', check.bookRequest, bookController.createBook);
 

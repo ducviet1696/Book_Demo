@@ -1,3 +1,5 @@
+const Publisher = require('../publisher/publisher');
+
 class Book{
 
     /**
@@ -28,7 +30,7 @@ class Book{
 
     /**
      * 
-     * @return {string}
+     * @return {Publisher}
      */
     getPublisher() {
         return this.publisher;
@@ -72,12 +74,12 @@ class Book{
 
     /**
      * 
-     * @param {string} publisher
+     * @param {Publisher} publisher
      * @return self
      */
     setPublisher(publisher) {
         this.publisher = publisher;
-        return this;
+        // return this;
     }
 
     /**
