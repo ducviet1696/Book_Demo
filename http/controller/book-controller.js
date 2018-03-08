@@ -13,7 +13,7 @@ class BookController {
     deleteBook(request, response, next) {
         let repo = request.app.get('books.repo');
         repo.remove(request.params.id).then(function () {
-            response.status(200).json({message:'Success'});
+            response.status(200).json({message: 'Success'});
         }).catch(function (err) {
             next(err);
         });
@@ -22,7 +22,7 @@ class BookController {
     editBook(request, response) {
         let repo = request.app.get('books.repo');
         repo.edit(request.book).then(function () {
-            response.status(200).json({message:'Success'});
+            response.status(200).json({message: 'Success'});
         });
     }
 

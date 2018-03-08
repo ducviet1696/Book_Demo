@@ -6,8 +6,8 @@ const check = require('../http/middlerware');
 let bookController = new BookController();
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res) {
+    res.render('index', {title: 'Express'});
 });
 
 let checkUpData = [check.checkTitleNull, check.checkAuthorNull, check.checkTitleLength, check.checkAuthorLength];

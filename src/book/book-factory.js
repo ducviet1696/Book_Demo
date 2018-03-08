@@ -15,15 +15,14 @@ class BookFactory{
     makeFromDB(bookRaw) {
 
         let book = new Book(bookRaw.title, bookRaw.author);
-
         book.setId(bookRaw.id);
         book.setPrice(bookRaw.price);
 
         let publisher = new Publisher(bookRaw.name);
-
         publisher.setId(bookRaw.publisher_id);
         publisher.setAddress(bookRaw.address);
         publisher.setPhone(bookRaw.phone);
+
         book.setPublisher(publisher);
         return book;
     }
@@ -36,9 +35,9 @@ class BookFactory{
     makeFromRequest(bookRaw) {
 
         let publisherProvider = new PublisherProvider();
-
         return publisherProvider.provide(bookRaw.publisher_id)
         .then( publisher => {
+
             let book = new Book(bookRaw.title, bookRaw.author);
             book.setPublisher(publisher[0]);
             book.setPrice(bookRaw.price);
