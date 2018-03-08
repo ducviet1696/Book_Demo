@@ -54,26 +54,6 @@ class Book{
 
     /**
      * 
-     * @param {string} title
-     * @return self
-     */
-    setTitle(title) {
-        this.title = title;
-        return this;
-    }
-
-    /**
-     * 
-     * @param {string} author
-     * @return self
-     */
-    setAuthor(author) {
-        this.author = author;
-        return this;
-    }
-
-    /**
-     * 
      * @param {Publisher} publisher
      * @return self
      */

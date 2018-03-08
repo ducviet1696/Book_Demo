@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -28,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('books.repo', new BookRepository(connection));
 app.set('book.searcher', new Searcher(connection, new BookFactory()));
+app.set('book.factory', new BookFactory());
 
 app.use('/', index);
 // app.use('/users', users);

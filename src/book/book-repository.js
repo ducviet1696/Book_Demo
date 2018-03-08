@@ -21,7 +21,7 @@ class BookRepository{
         return this.connection('books').insert({
             title: book.getTitle(),
             author: book.getAuthor(),
-            publisher_id: book.getPublisher().getId(),
+            publisher_id: book.getPublisher() ? book.getPublisher().getId():null,
             price: book.getPrice()
         });
     }
