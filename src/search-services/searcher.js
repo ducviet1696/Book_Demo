@@ -25,7 +25,7 @@ class Searcher {
             .from('books')
             .innerJoin('publishers', function () {
                 this.on('publisher_id', '=', 'publishers.id')
-            });
+            }).orderBy('id', 'asc');
         condition.describe(sqlQuery);
         return sqlQuery.then(results => results.map(element => factory.makeFromDB(element)));
     }
