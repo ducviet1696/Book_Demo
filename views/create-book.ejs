@@ -9,35 +9,35 @@
     <link rel="stylesheet" href="stylesheets/create-book.css" type="text/css">
 </head>
 <body>
-<div id="menu">
-    <h1>Library</h1>
-    <ul>
-        <li><a class="active" href="http://localhost:3000/">Home</a></li>
-        <li style="float:right"><a href="#">Edit book</a></li>
-        <li style="float:right"><a href="http://localhost:3000/create">Create book</a></li>
-        <li style="float:right"><a href="http://localhost:3000/list">List books</a></li>
+    <div id="container">
+        <div id="menu">
+            <h1>Library</h1>
+            <ul>
+                <li><a class="active" href="http://localhost:3000/">Home</a></li>
+                <li style="float:right"><a href="#">Edit book</a></li>
+                <li style="float:right"><a href="http://localhost:3000/create">Create book</a></li>
+                <li style="float:right"><a href="http://localhost:3000/list">List books</a></li>
 
-    </ul>
-</div>
-<div id = content>
-    <div class="create">
-        <h1 align="center">CREATE BOOK</h1>
-        <form class="">
-            <label >Title</label><br>
-            <input type="text" id="title" name="title"><br>
-            <label >Author</label><br>
-            <input type="text" name="author"><br>
-            <label >Publisher</label><br>
-            <select id="publisher" name="publisher"></select><br>
-            <label >Price</label><br>
-            <input type="text" name="price"><br>
-            <input type="submit" value="Submit">
+            </ul>
+        </div>
+        <div id = content>
+            <div class="create">
+                <h1 align="center" style="font-style: italic">CREATE BOOK</h1>
+                <form class="">
+                    <label >Title</label><br>
+                    <input type="text" id="title" name="title"><br>
+                    <label >Author</label><br>
+                    <input type="text" name="author"><br>
+                    <label >Publisher</label><br>
+                    <select id="publisher" name="publisher"></select><br>
+                    <label >Price</label><br>
+                    <input type="text" name="price"><br>
+                    <input type="submit" value="Submit">
 
-        </form>
+                </form>
+            </div>
+        </div>
+        <div id="footer"></div>
     </div>
-    <div id="footer">
-        <a style="color: #E8E8E8">Viet Pham</a>
-    </div>
-</div>
 </body>
 </html>
