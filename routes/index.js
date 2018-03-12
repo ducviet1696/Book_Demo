@@ -10,6 +10,14 @@ router.get('/', function (req, res) {
     res.render('index', {title: 'Express'});
 });
 
+router.get('/list', function (req, res) {
+    res.render('books')
+});
+
+router.get('/create', function (req, res) {
+    res.render('create-book')
+});
+
 let checkUpData = [check.checkTitleNull, check.checkAuthorNull, check.checkTitleLength, check.checkAuthorLength];
 
 

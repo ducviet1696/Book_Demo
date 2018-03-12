@@ -13,7 +13,7 @@ class BookController {
     deleteBook(request, response, next) {
         let repo = request.app.get('books.repo');
         repo.remove(request.params.id).then(function () {
-            response.status(200).render('/book');
+            response.status(200).json({message: 'Success'});
         }).catch(function (err) {
             next(err);
         });
@@ -29,9 +29,8 @@ class BookController {
 
     search(request, response, next) {
         request.app.get('book.searcher').search(request.condition)
-            .then((results) => response.status(200).render('books.ejs',{data:results.map(result => result.toJson())}))
+            .then((results) => response.status(200).send(results.map(result => result.toJson())))
             .catch(next)
     }
 }
-
 module.exports = BookController;

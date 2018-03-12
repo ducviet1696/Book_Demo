@@ -2,61 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Books</title>
-    <link rel='stylesheet' href='/stylesheets/books.css' />
-
+    <title>library books</title>
+    <link rel="stylesheet" href="stylesheets/menu-bar.css" type="text/css">
+    <link rel="stylesheet" href="stylesheets/table-books.css" type="text/css">
+    <link rel="stylesheet" href="stylesheets/content-book.css" type="text/css">
 </head>
 <body>
     <div id="container">
         <div id="menu">
+            <h1>Library</h1>
             <ul>
-                <li><a href="http://localhost:3000">Home</a></li>
-                <li><a href="http://localhost:3000/books">All books</a></li>
+                <li><a class="active" href="http://localhost:3000/">Home</a></li>
+                <li style="float:right"><a href="#">Edit book</a></li>
+                <li style="float:right"><a href="http://localhost:3000/create">Create book</a></li>
+                <li style="float:right"><a href="http://localhost:3000/list">List books</a></li>
+                <li></li>
             </ul>
         </div>
         <div id="content">
-            <div id="header">
-                <div id="title"><h1>Library Books</h1></div>
-            </div>
-            <div class="frame-title">
-
-            </div>
             <div class="row">
+                <h1 align="center">List books</h1>
+                <button id="get-button">READ-BOOKS</button>
                 <div id="box1" class="col">
                     <table cellpadding="5px" cellspacing="0">
                         <thead>
-                            <tr style="color: #E8E8E8" align="center">
-                                <td width="50px">id</td>
-                                <td>Title</td>
-                                <td>Author</td>
-                                <td>Publisher</td>
-                                <td>Price</td>
-                            </tr>
+                        <tr style="color: #E8E8E8" align="center">
+                            <td width="50px">id</td>
+                            <td>Title</td>
+                            <td>Author</td>
+                            <td>Publisher</td>
+                            <td>Price</td>
+                        </tr>
                         </thead>
                         <tbody>
-                            <%for(var i = 0; i < data.length;i++){%>
-                            <tr>
-                                <td align="center"><%=data[i].id%></td>
-                                <td><%=data[i].title%></td>
-                                <td><%=data[i].author%></td>
-                                <td><%=data[i].publisher%></td>
-                                <td><%=data[i].price%></td>
-                                <td width="68px">
-                                    <a href="/book/<%=data[i].id%>" >Delete</a>
-                                </td>
-                                <%}%>
-                            </tr>
+                            <script
+                                    src="https://code.jquery.com/jquery-3.3.1.min.js"
+                                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                                    crossorigin="anonymous"></script>
+                            <script src="js/read-book.js"></script>
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <td colspan="7"></td>
-                            </tr>
+                        <tr>
+                            <td colspan="7"></td>
+                        </tr>
                         </tfoot>
                     </table>
                 </div>
             </div>
         </div>
-        <div id="footer"></div>
+        <div id="footer">
+            <a style="color: #E8E8E8">Viet Pham</a>
+        </div>
     </div>
 </body>
 </html>
