@@ -17,8 +17,17 @@ router.get('/detail/:id', function (req, res, next) {
     next();
 }, bookController.detail);
 
+router.get('/edit/:id', function (req, res, next) {
+    req.condition = new condition.IdSearch(req.params.id);
+    next();
+}, bookController.bookFromEdit);
+
+router.post('/edit-book', check.putBookRequest, bookController.editBook);
+
 router.get('/create', bookController.bookFromCreate);
 
 router.post('/create-book', check.postBookRequest, bookController.createBook);
+
+router.get('/delete/:id', bookController.deleteBook);
 
 module.exports = router;

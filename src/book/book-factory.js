@@ -33,7 +33,6 @@ class BookFactory{
      * @return {Book}
      */
     makeFromRequest(bookRaw) {
-        console.log(bookRaw);
         let publisherProvider = new PublisherProvider();
         return publisherProvider.provide(bookRaw.publisher_id)
         .then( publisher => {
@@ -41,7 +40,6 @@ class BookFactory{
             book.setPublisher(publisher[0]);
             book.setPrice(bookRaw.price);
             book.setId(bookRaw.id);
-            console.log(book);
             return book;
         })
     }

@@ -39,7 +39,13 @@ class BookController {
      */
     bookFromCreate(request, response, next) {
         request.app.get('publishers.provider').provideAll()
-            .then( publishers => response.render('create-book.njk',{publishers:publishers}))
+            .then(publishers => response.render('create-book.njk', {publishers: publishers}))
+            .catch(next)
+    }
+
+    bookFromEdit(request, response, next) {
+        request.app.get('book.searcher').search(request.condition)
+            .then(books => response.render('edit-book.njk', {book: books[0]}))
             .catch(next)
     }
 
@@ -51,10 +57,31 @@ class BookController {
      */
     createBook(request, response, next) {
         request.app.get('books.repo')
-        .add(request.book).then( () => {response.redirect('/');})
-        .catch( (err) => {
-            next(err);
-        });
+        .add(request.book).then(() => {
+            response.redirect('/');
+        }).catch((err) => {
+                next(err);
+            });
+    }
+
+    editBook(request, response, next) {
+        request.app.get('books.repo')
+        .edit(request.book).then(() => {
+            response.redirect('/');
+        }).catch((err) => {
+                next(err);
+            });
+    }
+
+    deleteBook(request, response, next) {
+        request.app.get('books.repo')
+            .remove(request.params.id).then(() => {
+            response.redirect('/');
+        })
+            .catch((err) => {
+                next(err);
+            });
     }
 }
+
 module.exports = BookController;

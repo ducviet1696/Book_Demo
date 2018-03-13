@@ -12,12 +12,12 @@
     <section>
         <form action="/create-book" method="post">
             <div>
-                <label>Title:</label>
-                <input name="title">
+                <label for="title">Title</label>
+                <input id="title" type="text" name="title">
             </div>
             <div>
-                <label>Author:</label>
-                <input name="author">
+                <label for="author">Author</label>
+                <input id="author" type="text" name="author">
             </div>
             <div>
                 <label for="publisher">Publisher</label>
@@ -29,8 +29,8 @@
                 </select>
             </div>
             <div>
-                <label>price:</label>
-                <input type="number" name="price" placeholder="price">
+                <label for="price">Price</label>
+                <input id="price" type="number" name="price">
             </div>
             <button type="submit">Create</button>
         </form>

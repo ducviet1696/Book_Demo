@@ -16,10 +16,10 @@
     <li><small>Nhà xuất bản: {{book.getPublisher().getName()}}</small></li>
     <li><small>Giá: {{book.getPrice()}}</small></li>
 </ul>
-<form>
+<form action="/edit/{{book.getId()}}" method="get">
     <button>Edit</button>
 </form>
-<form>
+<form action="/delete/{{book.getId()}}" method="get">
     <button>Delete</button>
 </form>
 </body>
