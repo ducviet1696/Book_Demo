@@ -30,5 +30,31 @@ class BookController {
             })
             .catch(next)
     }
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @param next
+     */
+    bookFromCreate(request, response, next) {
+        request.app.get('publishers.provider').provideAll()
+            .then( publishers => response.render('create-book.njk',{publishers:publishers}))
+            .catch(next)
+    }
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @param next
+     */
+    createBook(request, response, next) {
+        request.app.get('books.repo')
+        .add(request.book).then( () => {response.redirect('/');})
+        .catch( (err) => {
+            next(err);
+        });
+    }
 }
 module.exports = BookController;

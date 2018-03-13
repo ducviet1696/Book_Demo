@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/create">Create</a>
+    </nav>
+    <section>
+        <form action="/create-book" method="post">
+            <div>
+                <label>Title:</label>
+                <input name="title">
+            </div>
+            <div>
+                <label>Author:</label>
+                <input name="author">
+            </div>
+            <div>
+                <label for="publisher">Publisher</label>
+                <select id="publisher" name="publisher_id">
+                    <option value="">null</option>
+                    {% for publisher in publishers %}
+                    <option value="{{publisher.id}}">{{publisher.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label>price:</label>
+                <input type="number" name="price" placeholder="price">
+            </div>
+            <button type="submit">Create</button>
+        </form>
+    </section>
+</body>
+</html>
