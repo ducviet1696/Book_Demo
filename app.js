@@ -1,14 +1,14 @@
-const express = require('express');
-const path = require('path');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const BookRepository = require('./src/book/book-repository');
-const connection = require('./database/connection');
-const BookFactory = require('./src/book/book-factory');
-const PublisherProvider = require('./src/publisher/publisher-provider')
-const Searcher = require('./src/search-services/searcher');
-const nunjucks = require('nunjucks');
+const express           = require('express');
+const path              = require('path');
+const logger            = require('morgan');
+const cookieParser      = require('cookie-parser');
+const bodyParser        = require('body-parser');
+const BookRepository    = require('./src/book/book-repository');
+const connection        = require('./database/connection');
+const BookFactory       = require('./src/book/book-factory');
+const PublisherProvider = require('./src/publisher/publisher-provider');
+const Searcher          = require('./src/search-services/searcher');
+const nunjucks          = require('nunjucks');
 
 const index = require('./routes/index');
 

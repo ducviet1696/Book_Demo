@@ -28,7 +28,9 @@ class BookController {
                 }
                 response.render('detail.njk', {book: books[0]})
             })
-            .catch(next)
+            .catch(function (err) {
+                next(err);
+            })
     }
 
     /**
@@ -40,13 +42,23 @@ class BookController {
     bookFromCreate(request, response, next) {
         request.app.get('publishers.provider').provideAll()
             .then(publishers => response.render('create-book.njk', {publishers: publishers}))
-            .catch(next)
+            .catch(function (err) {
+                next(err);
+            })
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @param next
+     */
     bookFromEdit(request, response, next) {
         request.app.get('book.searcher').search(request.condition)
             .then(books => response.render('edit-book.njk', {book: books[0]}))
-            .catch(next)
+            .catch(function (err) {
+                next(err);
+            })
     }
 
     /**
@@ -56,29 +68,36 @@ class BookController {
      * @param next
      */
     createBook(request, response, next) {
-        request.app.get('books.repo')
-        .add(request.book).then(() => {
-            response.redirect('/');
-        }).catch((err) => {
+        request.app.get('books.repo').add(request.book)
+            .then(() => response.redirect('/'))
+            .catch(function (err) {
                 next(err);
             });
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @param next
+     */
     editBook(request, response, next) {
-        request.app.get('books.repo')
-        .edit(request.book).then(() => {
-            response.redirect('/');
-        }).catch((err) => {
+        request.app.get('books.repo').edit(request.book)
+            .then(() => response.redirect('/'))
+            .catch(function (err) {
                 next(err);
             });
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @param next
+     */
     deleteBook(request, response, next) {
-        request.app.get('books.repo')
-            .remove(request.params.id).then(() => {
-            response.redirect('/');
-        })
-            .catch((err) => {
+        request.app.get('books.repo').remove(request.params.id).then(() => response.redirect('/'))
+            .catch(function (err) {
                 next(err);
             });
     }

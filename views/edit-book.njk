@@ -5,34 +5,35 @@
     <title>Library</title>
 </head>
 <body>
-<nav>
-    <a href="/">Home</a>
-    <a href="/create">Create</a>
-</nav>
-<section>
-    <form action="/edit-book" method="post">
-        <div>
-            <label for="id">Title</label>
-            <input id="id" type="text" name="id" value={{book.id}}>
-        </div>
-        <div>
-            <label for="title">Title</label>
-            <input id="title" type="text" name="title" value={{book.title}}>
-        </div>
-        <div>
-            <label for="author">Author</label>
-            <input id="author" type="text" name="author" value={{book.author}}>
-        </div>
-        <div>
-            <label for="publisher">Publisher</label>
-            <input id="publisher" type="text" name="publisher_id" value={{book.publisher.id}}>
-        </div>
-        <div>
-            <label for="price">Price</label>
-            <input id="price" type="text" name="price" value={{book.price}}>
-        </div>
-        <button type="submit">Create</button>
-    </form>
-</section>
+    <header><h1>Library</h1></header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/create">Create</a>
+    </nav>
+    <section>
+        <form action="/edit-book" method="post">
+            <div>
+                <label for="id">Title</label>
+                <input id="id" type="text" name="id" value={{book.id}}>
+            </div>
+            <div>
+                <label for="title">Title</label>
+                <input id="title" type="text" name="title" value={{book.title}}>
+            </div>
+            <div>
+                <label for="author">Author</label>
+                <input id="author" type="text" name="author" value={{book.author}}>
+            </div>
+            <div>
+                <label for="publisher">Publisher</label>
+                <input id="publisher" type="text" name="publisher_id" value={{book.publisher.id}}>
+            </div>
+            <div>
+                <label for="price">Price</label>
+                <input id="price" type="text" name="price" value={{book.price}}>
+            </div>
+            <button>Save</button>
+        </form>
+    </section>
 </body>
 </html>

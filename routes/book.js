@@ -30,4 +30,18 @@ router.post('/create-book', check.postBookRequest, bookController.createBook);
 
 router.get('/delete/:id', bookController.deleteBook);
 
+router.get('/search/keyword', function (req, res, next) {
+    req.condition = new condition.KeywordSearch(req.query.keyword);
+    next();
+}, bookController.getAll);
+
+router.get('/search', function(req, res) {
+    res.render('advanced-search.njk');
+});
+
+router.get('/search/advanced', function (req, res, next) {
+   req.condition = new condition.AdvanceSearch(req.query.title, req.query.author, req.query.publisher);
+   next();
+}, bookController.getAll);
+
 module.exports = router;

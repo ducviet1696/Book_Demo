@@ -1,6 +1,6 @@
 $(function() {
     // GET/READ
-    $('#get-button').on('click', function() {
+    $(document).ready(function() {
         $.ajax({
             url: '/books',
             contentType: 'application/json',
@@ -22,22 +22,6 @@ $(function() {
                         </tr>\
                     ');
                 });
-
-            }
-        });
-    });
-
-    $('table').on('click', '.delete-button', function() {
-        let rowBook = $(this).closest('tr');
-        let id = rowBook.find('.id').text();
-
-        $.ajax({
-            url: '/book/' + id,
-            method: 'DELETE',
-            contentType: 'application/json',
-            success: function(response) {
-                console.log(response);
-                $('#get-button').click();
             }
         });
     });
