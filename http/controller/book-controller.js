@@ -9,9 +9,7 @@ class BookController {
     getAll(request, response, next) {
         request.app.get('book.searcher').search(request.condition)
             .then((books) => response.render('list-book.njk', {books: books}))
-            .catch(function (err) {
-                next(err);
-            })
+            .catch(next)
     }
 
     /**
@@ -28,9 +26,7 @@ class BookController {
                 }
                 response.render('detail.njk', {book: books[0]})
             })
-            .catch(function (err) {
-                next(err);
-            })
+            .catch(next)
     }
 
     /**
@@ -42,9 +38,7 @@ class BookController {
     bookFromCreate(request, response, next) {
         request.app.get('publishers.provider').provideAll()
             .then(publishers => response.render('create-book.njk', {publishers: publishers}))
-            .catch(function (err) {
-                next(err);
-            })
+            .catch(next)
     }
 
     /**
@@ -54,11 +48,11 @@ class BookController {
      * @param next
      */
     bookFromEdit(request, response, next) {
-        request.app.get('book.searcher').search(request.condition)
-            .then(books => response.render('edit-book.njk', {book: books[0]}))
-            .catch(function (err) {
-                next(err);
-            })
+        let book = request.app.get('book.searcher').search(request.condition);
+        let publisher = request.app.get('publishers.provider').provideAll();
+        Promise.all([book, publisher])
+            .then(bookEdit => response.render('edit-book.njk', {book: bookEdit[0], publishers: bookEdit[1]}))
+            .catch(next)
     }
 
     /**

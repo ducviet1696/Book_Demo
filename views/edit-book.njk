@@ -17,23 +17,28 @@
         <form action="/edit-book" method="post">
             <div>
                 <label for="id">Id</label>
-                <input id="id" type="text" name="id" value="{{book.getId()}}">
+                <input id="id" type="text" name="id" value="{{book[0].getId()}}" disabled>
             </div>
             <div>
                 <label for="title">Title</label>
-                <input id="title" type="text" name="title" value="{{book.getTitle()}}">
+                <input id="title" type="text" name="title" value="{{book[0].getTitle()}}">
             </div>
             <div>
                 <label for="author">Author</label>
-                <input id="author" type="text" name="author" value="{{book.getAuthor()}}">
+                <input id="author" type="text" name="author" value="{{book[0].getAuthor()}}">
             </div>
             <div>
                 <label for="publisher">Publisher</label>
-                <input id="publisher" type="text" name="publisher_id" value="{{book.getPublisher().getId()}}">
+                <select id="publisher" name="publisher_id">
+                    <option value="">select...</option>
+                    {% for publisher in publishers %}
+                    <option value="{{publisher.getId()}}">{{publisher.getName()}}</option>
+                    {% endfor %}
+                </select>
             </div>
             <div>
                 <label for="price">Price</label>
-                <input id="price" type="text" name="price" value="{{book.getPrice()}}">
+                <input id="price" type="text" name="price" value="{{book[0].getPrice()}}">
             </div>
             <button>Save</button>
         </form>
