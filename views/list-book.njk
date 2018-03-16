@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Library</title>
+    <link rel="stylesheet" href="/stylesheets/menu-books.css">
 </head>
 <body>
     <header><h1>Library</h1></header>
@@ -11,18 +12,14 @@
             <li><a href="/">Home</a></li>
             <li><a href="/create">Create</a></li>
             <li><a href="/search">Search advanced</a></li>
+            <li style="float: right; padding-top: 8px; padding-right: 10px">
+                <form action="/search/keyword" method="get">
+                        <input name="keyword" title="keyword">
+                        <button value="search">Search</button>
+                </form>
+            </li>
         </ul>
     </nav>
-    <section>
-        <form action="/search/keyword" method="get">
-            <div>
-                <input name="keyword" title="keyword">
-            </div>
-            <div>
-                <button value="search">Search</button>
-            </div>
-        </form>
-    </section>
     <section>
         <ul>
             {% for book in books %}

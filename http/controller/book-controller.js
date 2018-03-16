@@ -51,7 +51,7 @@ class BookController {
         let book = request.app.get('book.searcher').search(request.condition);
         let publisher = request.app.get('publishers.provider').provideAll();
         Promise.all([book, publisher])
-            .then(bookEdit => response.render('edit-book.njk', {book: bookEdit[0], publishers: bookEdit[1]}))
+            .then(bookEdit => response.render('edit-book.njk', {book: bookEdit[0][0], publishers: bookEdit[1]}))
             .catch(next)
     }
 

@@ -29,8 +29,8 @@ class BookFactory{
 
     /**
      *
-     * @param {Object} bookRaw
-     * @return {Book}
+     * @param bookRaw
+     * @return {PromiseLike<Publisher> | Promise<Publisher>}
      */
     makeFromRequest(bookRaw) {
         let publisherProvider = new PublisherProvider();

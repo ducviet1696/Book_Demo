@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function ajax(method, data, res) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4){
+                    res
+                }
+            };
+            xhr.open(method, data);
+            xhr.send();
+        }
+
+    </script>
+</body>
+</html>

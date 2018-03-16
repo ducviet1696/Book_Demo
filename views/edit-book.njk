@@ -14,23 +14,19 @@
         </ul>
     </nav>
     <section>
-        <form action="/edit-book" method="post">
-            <div>
-                <label for="id">Id</label>
-                <input id="id" type="text" name="id" value="{{book[0].getId()}}" disabled>
-            </div>
+        <form action="/edit-book/{{book.getId()}}" method="post">
             <div>
                 <label for="title">Title</label>
-                <input id="title" type="text" name="title" value="{{book[0].getTitle()}}">
+                <input id="title" type="text" name="title" value="{{book.getTitle()}}">
             </div>
             <div>
                 <label for="author">Author</label>
-                <input id="author" type="text" name="author" value="{{book[0].getAuthor()}}">
+                <input id="author" type="text" name="author" value="{{book.getAuthor()}}">
             </div>
             <div>
                 <label for="publisher">Publisher</label>
                 <select id="publisher" name="publisher_id">
-                    <option value="">select...</option>
+                    <option value="{{book.getPublisher().getId()}}">{{book.getPublisher().getName()}}</option>
                     {% for publisher in publishers %}
                     <option value="{{publisher.getId()}}">{{publisher.getName()}}</option>
                     {% endfor %}
@@ -38,7 +34,7 @@
             </div>
             <div>
                 <label for="price">Price</label>
-                <input id="price" type="text" name="price" value="{{book[0].getPrice()}}">
+                <input id="price" type="text" name="price" value="{{book.getPrice()}}">
             </div>
             <button>Save</button>
         </form>

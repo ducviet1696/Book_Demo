@@ -22,7 +22,7 @@ router.get('/edit/:id', function (req, res, next) {
     next();
 }, bookController.bookFromEdit);
 
-router.post('/edit-book', checkUpData, check.putBookRequest, bookController.editBook);
+router.post('/edit-book/:id', checkUpData, check.putBookRequest, bookController.editBook);
 
 router.get('/create', bookController.bookFromCreate);
 

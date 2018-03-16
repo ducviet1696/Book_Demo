@@ -21,7 +21,7 @@ class PublisherProvider {
     provide(id) {
         let factory = new PublisherFactory();
         return connection('publishers').where({'publishers.id': id})
-            .then(results => results.map(element => factory.make(element)))
+            .then(publisherRaw => publisherRaw.map(element => factory.make(element)))
     }
 
     /**
