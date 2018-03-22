@@ -1,6 +1,3 @@
-const Book = require('./book');
-const Connection = require('../../database/connection');
-
 class BookRepository{
 
     /**
@@ -17,7 +14,6 @@ class BookRepository{
      * @return {Promise <void>}
      */
     add(book) {
-        // console.log(book, book.getPublisher());
         return this.connection('books').insert({
             title: book.getTitle(),
             author: book.getAuthor(),
@@ -56,7 +52,14 @@ class BookRepository{
         });
     }
 
-
+    detail(id) {
+        return this.connection().select('books.id', 'books.title', 'books.author', 'books.publisher_id', 'books.price', 'publishers.name', 'publishers.address', 'publishers.phone')
+            .from('books')
+            .innerJoin('publishers', function () {
+                this.on('publisher_id', '=', 'publishers.id')
+            })
+            .where({'books.id': id});
+    }
 }
 
 module.exports = BookRepository;
