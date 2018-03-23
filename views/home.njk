@@ -1,7 +1,19 @@
 {% extends 'layout.njk' %}
 
+{% block title %}Library{% endblock %}
+
+{% block navbar%}
+<ul class="nav navbar-nav">
+    <li class="active"><a href="/">Home</a></li>
+    <li><a href="/create">Create</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="/search"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+</ul>
+{% endblock %}
+
 {% block content %}
-<div class="input-group" style="margin-bottom: 20px; margin-top: 20px">
+<div class="input-group" style="margin-bottom: 20px">
     <input class="form-control" id="search-keyword" placeholder="Search" name="search">
     <div class="input-group-btn">
         <button class="btn btn-default" type="submit" id="btnSearch">

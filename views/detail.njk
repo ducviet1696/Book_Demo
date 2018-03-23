@@ -1,32 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Library</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body>
-<header>
-    <h1>Library</h1>
-</header>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <ul class="navbar-nav">
-        <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-        <li class="nav-item active"><a href="/create" class="nav-link">Create</a></li>
-        <li class="nav-item active"><a href="/search" class="nav-link">Search advanced</a></li>
-    </ul>
-</nav>
-<h2>{{book.getTitle()}}</h2>
-<ul>
-    <li><small>Tác giả: {{book.getAuthor()}}</small></li>
-    <li><small>Nhà xuất bản: {{book.getPublisher().getName()}}</small></li>
-    <li><small>Giá: {{book.getPrice()}}</small></li>
+{% extends 'layout.njk' %}
+
+{% block navbar%}
+<ul class="nav navbar-nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/create">Create</a></li>
 </ul>
-<form action="/edit/{{book.getId()}}" method="get" style="float: left">
-    <button class="btn btn-outline-success">Edit</button>
-</form>
-<form action="/delete/{{book.getId()}}" method="get">
-    <button class="btn btn-outline-danger">Delete</button>
-</form>
-</body>
-</html>
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="/search"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<ul class="list-group">
+    <li class="list-group-item list-group-item-action">
+        <h2>{{book.getTitle()}}</h2>
+        <div style="margin-top: 20px; margin-bottom: 20px">
+            <small>Tác giả: {{book.getAuthor()}}</small><br>
+            <small>Nhà xuất bản: {{book.getPublisher().getName()}}</small><br>
+            <small>Giá: {{book.getPrice()}}</small><br>
+        </div>
+        <div>
+            <a href="/edit/{{book.getId()}}" id="edit" class="btn btn-primary">Edit</a>
+            <a href="/delete/{{book.getId()}}" class="btn btn-danger">Delete</a>
+        </div>
+    </li>
+</ul>
+{% endblock %}

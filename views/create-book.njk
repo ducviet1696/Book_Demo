@@ -1,30 +1,38 @@
 {% extends 'layout.njk' %}
 
+{% block navbar%}
+<ul class="nav navbar-nav">
+    <li><a href="/">Home</a></li>
+    <li class="active"><a href="/create">Create</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="/search"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+</ul>
+{% endblock %}
+
 {% block content %}
-<div style="margin-top: 20px; margin-bottom: 20px">
-    <form action="/create-book" method="post">
-        <div>
-            <label for="title">Title</label>
-            <input id="title" type="text" name="title">
-        </div>
-        <div>
-            <label for="author">Author</label>
-            <input id="author" type="text" name="author">
-        </div>
-        <div>
-            <label for="publisher">Publisher</label>
-            <select id="publisher" name="publisher_id">
-                <option value="">select...</option>
-                {% for publisher in publishers %}
-                <option value="{{publisher.getId()}}">{{publisher.getName()}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div>
-            <label for="price">Price</label>
-            <input id="price" type="number" name="price">
-        </div>
-        <button>Create</button>
-    </form>
-</div>
+<form action="/create-book" method="post">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input id="title" class="form-control" type="text" name="title">
+    </div>
+    <div class="form-group">
+        <label for="author">Author</label>
+        <input id="author" class="form-control" type="text" name="author">
+    </div>
+    <div class="form-group">
+        <label for="publisher">Publisher</label>
+        <select id="publisher" class="form-control" name="publisher_id">
+            <option value="">select...</option>
+            {% for publisher in publishers %}
+            <option value="{{publisher.getId()}}">{{publisher.getName()}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input id="price" class="form-control" type="number" name="price">
+    </div>
+    <button class="btn btn-primary">Create</button>
+</form>
 {% endblock %}

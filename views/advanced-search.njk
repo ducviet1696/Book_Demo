@@ -1,7 +1,17 @@
 {% extends 'layout.njk' %}
 
+{% block navbar%}
+<ul class="nav navbar-nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/create">Create</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+    <li class="active"><a href="/search"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+</ul>
+{% endblock %}
+
 {% block content %}
-<div style="margin-top: 20px; margin-bottom: 20px">
+<div style="margin-bottom: 20px">
     <div class="form-group" >
         <label for="title">Title</label>
         <input id="title" class="form-control" name="title" title="title">
