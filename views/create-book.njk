@@ -1,5 +1,8 @@
 {% extends 'layout.njk' %}
 
+{% block title%}create book{% endblock %}
+
+
 {% block navbar%}
 <ul class="nav navbar-nav">
     <li><a href="/">Home</a></li>
@@ -11,14 +14,26 @@
 {% endblock %}
 
 {% block content %}
-<form action="/create-book" method="post">
+<form id="create-book" action="/create-book" method="post">
     <div class="form-group">
         <label for="title">Title</label>
         <input id="title" class="form-control" type="text" name="title">
+        <div class="alert alert-danger check" id="titleNull" hidden>
+            <strong>Danger!</strong> Title is not Null
+        </div>
+        <div class="alert alert-danger check" id="titleLength" hidden>
+            <strong>Danger!</strong> Title is less 40
+        </div>
     </div>
     <div class="form-group">
         <label for="author">Author</label>
         <input id="author" class="form-control" type="text" name="author">
+        <div class="alert alert-danger check" id="authorNull" hidden>
+            <strong>Danger!</strong> Author is not Null
+        </div>
+        <div class="alert alert-danger check" id="authorLength" hidden>
+            <strong>Danger!</strong> Author is less 100
+        </div>
     </div>
     <div class="form-group">
         <label for="publisher">Publisher</label>
@@ -33,6 +48,8 @@
         <label for="price">Price</label>
         <input id="price" class="form-control" type="number" name="price">
     </div>
-    <button class="btn btn-primary">Create</button>
+    <button id="btn-create" class="btn btn-primary">Create</button>
 </form>
+<script src="js/check-title.js"></script>
+<script src="js/check-author.js"></script>
 {% endblock %}
