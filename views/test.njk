@@ -1,13 +1,8 @@
 {% extends 'layout.njk' %}
 
 {% block content %}
-<div class="input-group" style="margin-bottom: 20px; margin-top: 20px">
-    <input class="form-control" id="search-keyword" placeholder="Search" name="search">
-    <div class="input-group-btn">
-        <button class="btn btn-default" type="submit" id="btnSearch">
-            <i class="glyphicon glyphicon-search"></i>
-        </button>
-    </div>
+<div style="margin-bottom: 20px; margin-top: 20px">
+    <input id="search-keyword" placeholder="Search" name="search">
 </div>
 <div>
     <ul id="list-books" class="list-group"></ul>

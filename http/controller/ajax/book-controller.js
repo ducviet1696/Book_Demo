@@ -61,7 +61,7 @@ class BookController {
      */
     getDetail(request, response, next) {
         request.app.get('books.repo').detail(request.params.id)
-            .then(books => books.map(book => request.app.get('book.factory').makeFromDB(book)))
+            .then(books => books.map(book => request.app.get('book.factory').make(book)))
             .then(books => response.render('detail.njk',{book: books[0]}))
             .catch(next)
     }

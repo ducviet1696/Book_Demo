@@ -10,7 +10,7 @@ class BookFactoryFromReq{
      * @param bookRaw
      * @return {PromiseLike<Publisher> | Promise<Publisher>}
      */
-    makeFromRequest(bookRaw) {
+    make(bookRaw) {
         return this.PublisherProvide.provide(bookRaw.publisher_id)
             .then( publisher => {
                 let book = new Book(bookRaw.title, bookRaw.author);

@@ -8,7 +8,7 @@ class BookFactoryFromDB{
      * @param {Object} bookRaw
      * @return {Book}
      */
-    makeFromDB(bookRaw) {
+    make(bookRaw) {
 
         let book = new Book(bookRaw.title, bookRaw.author);
         book.setId(bookRaw.id);

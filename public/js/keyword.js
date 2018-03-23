@@ -6,6 +6,13 @@ $(document).ready(function () {
         }).then(renderBooks)
     });
 
+    $('#btnSearch').click(function () {
+        var $this = $('#search-keyword');
+        $.get('/search-basic', {
+            keyword: $this.val(),
+        }).then(renderBooks)
+    });
+
     function renderBooks(books) {
         var template = $('#book-template').html();
         var resultHTML = books.map(function (book) {

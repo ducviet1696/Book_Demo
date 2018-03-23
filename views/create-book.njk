@@ -1,44 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Library</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body>
-    <header><h1>Library</h1></header>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a href="/create" class="nav-link">Create</a></li>
-            <li class="nav-item active"><a href="/search" class="nav-link">Search advanced</a></li>
-        </ul>
-    </nav>
-    <section>
-        <form action="/create-book" method="post">
-            <div>
-                <label for="title">Title</label>
-                <input id="title" type="text" name="title">
-            </div>
-            <div>
-                <label for="author">Author</label>
-                <input id="author" type="text" name="author">
-            </div>
-            <div>
-                <label for="publisher">Publisher</label>
-                <select id="publisher" name="publisher_id">
-                    <option value="">select...</option>
-                    {% for publisher in publishers %}
-                    <option value="{{publisher.getId()}}">{{publisher.getName()}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div>
-                <label for="price">Price</label>
-                <input id="price" type="number" name="price">
-            </div>
-            <button>Create</button>
-        </form>
-    </section>
-</body>
-</html>
+{% extends 'layout.njk' %}
+
+{% block content %}
+<div style="margin-top: 20px; margin-bottom: 20px">
+    <form action="/create-book" method="post">
+        <div>
+            <label for="title">Title</label>
+            <input id="title" type="text" name="title">
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input id="author" type="text" name="author">
+        </div>
+        <div>
+            <label for="publisher">Publisher</label>
+            <select id="publisher" name="publisher_id">
+                <option value="">select...</option>
+                {% for publisher in publishers %}
+                <option value="{{publisher.getId()}}">{{publisher.getName()}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="price">Price</label>
+            <input id="price" type="number" name="price">
+        </div>
+        <button>Create</button>
+    </form>
+</div>
+{% endblock %}
